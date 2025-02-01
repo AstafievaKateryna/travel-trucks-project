@@ -1,0 +1,17 @@
+.header {
+  border-bottom: 1px solid var(--Badges);
+  background-color: var(--Inputs);
+}
+
+.mainContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 64px;
+  max-width: 1312px;
+  margin: 0 auto;
+}
+.invisible {
+  width: 136px;
+  height: 16px;
+}
