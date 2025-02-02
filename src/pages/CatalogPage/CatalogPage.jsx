@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import CamperList from "../../components/common/CamperList/CamperList";
-import Sidebar from "../../components/common/Sidebar/Sidebar";
+import Sidebar from "../../components/common/SideBar/SideBar";
 import s from "./CatalogPage.module.css";
 import { useEffect } from "react";
 import { clearCampers } from "../../redux/campers/slice";
