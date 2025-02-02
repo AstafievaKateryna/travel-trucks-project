@@ -1,5 +1,5 @@
 import SvgIcon from "../SvgIcon/SvgIcon";
-import s from "./Sidebar.module.css";
+import s from "./SideBar.module.css";
 import equipmentData from "../../../data/equipmentData.json";
 import types from "../../../data/types.json";
 import { useState } from "react";
