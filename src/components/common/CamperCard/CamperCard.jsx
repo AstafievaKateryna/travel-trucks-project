@@ -6,6 +6,7 @@ import CamperPrice from "../camper/CamperPrice/CamperPrice";
 import SvgIcon from "../SvgIcon/SvgIcon";
 import { selectFavoriteCampers } from "../../../redux/campers/selectors";
 import { toggleFavorite } from "../../../redux/campers/slice";
+import Button from "../button/Button";
 
 const CamperCard = ({ item }) => {
   const dispatch = useDispatch();

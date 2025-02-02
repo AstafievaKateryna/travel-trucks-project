@@ -9,7 +9,7 @@ const CamperReviews = () => {
   return (
     <ul className={s.ul}>
       {reviews.map((item) => (
-        <ReviewCard key={item.reviewr_rating} item={item} />
+        <ReviewCard key={item.reviewer_rating} item={item} />
       ))}
     </ul>
   );

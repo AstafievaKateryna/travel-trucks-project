@@ -10,14 +10,14 @@ import {
 } from "redux-persist";
 import { campersReducer } from "./campers/slice";
 
-export const store = configeStore({
+export const store = configureStore({
   reducer: {
     campers: campersReducer,
   },
   middleware: (getDefaultMiddleware) =>
-    detDefaultMiddleware({
-      serializabkeCheck: {
-        ignoreActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
     }),
 });

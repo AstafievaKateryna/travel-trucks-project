@@ -1,6 +1,7 @@
 import s from "./CamperOptions.module.css";
 
-const CamperOptions = () => {
+const CamperOptions = ({ item }) => {
+  const options = Object.keys(item).filter((key) => item[key] === true);
   return (
     <ul className={s.options}>
       {options.map((item) => (

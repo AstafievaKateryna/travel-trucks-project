@@ -51,36 +51,37 @@ const slice = createSlice({
       .addCase(fetchCampersThunk.fulfilled, (state, action) => {
         state.loading = false;
         state.error = null;
+
+        // Перевіряємо, чи є items масивом
+        const items = Array.isArray(action.payload?.items)
+          ? action.payload.items
+          : [];
+
         const args = action.meta.arg || {};
         const isFilterApplied =
           args.query ||
           args.location ||
           args.form ||
           (args.equipment && args.equipment.length > 0);
-        const { item } = action.payload;
+
         if (isFilterApplied) {
           if (state.currentPage === 1) {
             state.campers = items;
           } else {
             state.campers = [...state.campers, ...items];
           }
-          state.hasMore = action.payload.items.length > 0;
+          state.hasMore = items.length > 0;
         } else {
-          const existing = new Set(state.campers.map((item) => item.id));
-          const newCampers = action.payload.items.filter(
-            (item) => !existingIds.has(item.id)
+          const existingIds = new Set(
+            Array.isArray(state.campers)
+              ? state.campers.map((item) => item.id)
+              : []
           );
+          const newCampers = items.filter((item) => !existingIds.has(item.id));
           state.campers = [...state.campers, ...newCampers];
         }
 
-        if (items.length > 0) {
-          state.hasMore = items.length === state.limit;
-        } else {
-          state.hasMore = false;
-        }
-        if (action.payload.items.length === 0) {
-          state.hasMore = false;
-        }
+        state.hasMore = items.length === state.limit;
       })
       .addCase(fetchCampersThunk.pending, (state) => {
         state.loading = true;
@@ -93,9 +94,11 @@ const slice = createSlice({
       })
       .addCase(fetchCamperByIdThunk.fulfilled, (state, action) => {
         state.camperById = null;
-        state.campers = state.campers.filter(
-          (item) => item.id === action.payload.id
-        );
+
+        // Захист для state.campers
+        const campers = Array.isArray(state.campers) ? state.campers : [];
+        state.campers = campers.filter((item) => item.id === action.payload.id);
+
         state.camperById = action.payload;
         state.loading = false;
         state.error = false;

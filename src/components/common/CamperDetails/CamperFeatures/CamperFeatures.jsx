@@ -9,7 +9,7 @@ const CamperFeatures = () => {
 
   return (
     <div className={s.featuresContainer}>
-      <CamperOptions otem={camper} />
+      <CamperOptions item={camper} />
       <h3 className={s.h3}>Vehicle details</h3>
       <CamperVehicleList item={camper} />
     </div>

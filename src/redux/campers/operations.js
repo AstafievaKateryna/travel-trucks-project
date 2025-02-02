@@ -3,19 +3,6 @@ import { api } from "../../services/api";
 import formMapping from "../../data/forms.json";
 import toast from "react-hot-toast";
 
-export const fetchCamperByIdThunk = createAsyncThunk(
-  "fetchCamperById",
-  async (id, { rejectWithValue }) => {
-    try {
-      const res = await api.get(`campers/${id}`);
-
-      return res.data;
-    } catch (error) {
-      return rejectWithValue(error.response.data);
-    }
-  }
-);
-
 export const fetchCampersThunk = createAsyncThunk(
   "fetchCampers",
   async (
@@ -53,7 +40,7 @@ export const fetchCampersThunk = createAsyncThunk(
       }
       const res = await api.get("campers", {
         params,
-      }); // Can't fixed Error 404 :(
+      });
       return res.data;
     } catch (error) {
       if (error.response && error.response.status === 404) {
@@ -61,6 +48,19 @@ export const fetchCampersThunk = createAsyncThunk(
         return thunkApi.rejectWithValue({ items: [] });
       }
       return thunkApi.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const fetchCamperByIdThunk = createAsyncThunk(
+  "fetchCamperById",
+  async (id, { rejectWithValue }) => {
+    try {
+      const res = await api.get(`campers/${id}`);
+
+      return res.data;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
     }
   }
 );

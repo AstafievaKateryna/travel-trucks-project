@@ -6,15 +6,11 @@ const Navigation = () => {
   return (
     <nav>
       <ul className={s.navList}>
-        <li ckassName={s.navItem}>
-          <NavLink to="/" className={buildLinkClass}>
-            Home
-          </NavLink>
+        <li className={s.navItem}>
+          <NavLink to="/">Home</NavLink>
         </li>
         <li className={s.navItem}>
-          <NavLink to="/catalog" className={buildLinkClass}>
-            Catalog
-          </NavLink>
+          <NavLink to="/catalog">Catalog</NavLink>
         </li>
       </ul>
     </nav>

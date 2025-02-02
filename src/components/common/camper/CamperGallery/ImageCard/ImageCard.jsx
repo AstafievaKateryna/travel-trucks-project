@@ -1,6 +1,6 @@
 import s from "./ImageCard.module.css";
 
-const ImageCard = () => {
+const ImageCard = ({ item }) => {
   return (
     <li className={s.card}>
       <img

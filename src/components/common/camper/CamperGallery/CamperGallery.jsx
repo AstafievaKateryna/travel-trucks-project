@@ -1,10 +1,10 @@
 import ImageCard from "./ImageCard/ImageCard";
 import s from "./CamperGallery.module.css";
 
-const CamperGallery = () => {
+const CamperGallery = ({ gallery }) => {
   return (
     <ul className={s.ul}>
-      {CamperGallery.map((item) => (
+      {gallery.map((item) => (
         <ImageCard key={item.thumb} item={item} />
       ))}
     </ul>
